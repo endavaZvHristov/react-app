@@ -21,9 +21,7 @@ const burger = ( props ) => {
     return (
     <section className={classes.Burger} >
         <BurgerIngredient type="bread-top" />
-        <BurgerIngredient type="salad" />
-        <BurgerIngredient type="cheese" />
-        <BurgerIngredient type="meat" />
+        { transformIngredient }
         <BurgerIngredient type="bread-bottom" />
     </section>
     );

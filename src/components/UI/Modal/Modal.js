@@ -1,19 +1,31 @@
-import React from 'react';
+import React, { Component } from 'react';
 import classes from './Modal.css';
-import HocAux from '../../../hoc/HocAux';
+import HocAux from '../../../hoc/HocAux/HocAux';
 import Backdrop from '../Backdrop/Backdrop';
 
-const modal = ( props ) => (
-    <HocAux>
-        <Backdrop show={props.show} clicked={props.modalClosed} />
-    <section className={classes.Modal}
-        style={{
-            transform: props.show ? 'translateY(0)' : 'translateY(-100vh)',
-            opacity: props.show ? '1' : '0',
-        }}>
-        {props.children}
-    </section>
-    </HocAux>
-);
+class Modal extends Component {
 
-export default modal;
+    shouldComponentUpdate(nextProps, nextState, nextContext) {
+        return nextProps.show !== this.props.show;
+    }
+    componentWillUpdate(nextProps, nextState, nextContext) {
+        console.log('[Modal] wiil update');
+    }
+
+    render() {
+        return(
+            <HocAux>
+                <Backdrop show={this.props.show} clicked={this.props.modalClosed} />
+                <section className={classes.Modal}
+                         style={{
+                             transform: this.props.show ? 'translateY(0)' : 'translateY(-100vh)',
+                             opacity: this.props.show ? '1' : '0',
+                         }}>
+                    {this.props.children}
+                </section>
+            </HocAux>
+        );
+    }
+}
+
+export default Modal;

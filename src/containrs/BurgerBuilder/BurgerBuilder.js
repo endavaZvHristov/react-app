@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import HocAux from '../../hoc/HocAux';
+import HocAux from '../../hoc/HocAux/HocAux';
 import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 import Modal from '../../components/UI/Modal/Modal';
@@ -45,7 +45,7 @@ class BurgerBuilder extends Component {
     }
 
     purchaseContinueHandler = () => {
-
+        alert('boom');
     };
 
     addIngredientHandler = ( type ) => {
@@ -89,8 +89,9 @@ class BurgerBuilder extends Component {
             <HocAux>
                 <Modal show={this.state.purchasing} modalClosed={this.purchaseCancelHandler} >
                     <OrderSummary
+                        price={this.state.totalPrice}
                         purchaseContinue={this.purchaseContinueHandler}
-                        purchaseCancel={this.purchaseCancelHandler}
+                        purchaseCancelled={this.purchaseCancelHandler}
                         ingredients={this.state.ingredients} />
                 </Modal>
                 <Burger ingredients={this.state.ingredients} />

@@ -3,6 +3,8 @@ import HocAux from '../HocAux/HocAux';
 import classes from './Layout.css';
 import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
 import SideDraw from '../../components/Navigation/SideDraw/SideDraw';
+
+
 class Layout extends Component {
     state = {
         showSideBar: false,
@@ -30,6 +32,7 @@ class Layout extends Component {
                 <main className={classes.HeaderTop}  >
                     {this.props.children}
                 </main>
+
             </HocAux>
         );
     }
